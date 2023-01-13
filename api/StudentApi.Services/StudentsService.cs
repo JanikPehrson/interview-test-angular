@@ -18,14 +18,16 @@ namespace StudentApi.Services
                 FirstName = "Marty",
                 LastName = "McFly",
                 Email = "back.future@test.com",
-                Major = "History"
+                Major = "History",
+                AverageGrade = 75
             });
 
             students.Add(new Student {
                 FirstName = "Emmett",
                 LastName = "Brown",
                 Email = "dr.brown@test.com",
-                Major = "Physics"
+                Major = "Physics",
+                AverageGrade = 100
             });
 
             students.Add(new Student
@@ -33,7 +35,8 @@ namespace StudentApi.Services
                 FirstName = "Biff",
                 LastName = "Tannen",
                 Email = "biff@test.com",
-                Major = "PE"
+                Major = "PE",
+                AverageGrade = 30
             });
         }
 
@@ -41,11 +44,18 @@ namespace StudentApi.Services
         /// Adds a new student to the system
         /// </summary>
         /// <param name="student"></param>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
+        /// returns success
         public bool AddStudent(Student student)
         {
-            throw new NotImplementedException();
+            try
+            {
+                students.Add(student);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -53,10 +63,18 @@ namespace StudentApi.Services
         /// </summary>
         /// <param name="student"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
+        /// returns success
         public bool DeleteStudent(Student student)
         {
-            throw new NotImplementedException();
+            try
+            {
+                students.Remove(student);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>

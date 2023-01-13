@@ -1,5 +1,9 @@
 <h1 id="tableLabel">Students</h1>
 
+<a routerLink="/student-add" class="button fancy-button">
+  <mat-icon>add</mat-icon> Add Student
+</a>
+
 <p *ngIf="!students"><em>Loading...</em></p>
 
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="students">
@@ -9,6 +13,8 @@
       <th>Lastname</th>
       <th>Email</th>
       <th>Major</th>
+      <th>AverageGrade</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +23,22 @@
       <td>{{ student.lastName }}</td>
       <td>{{ student.email }}</td>
       <td>{{ student.major }}</td>
+      <td>
+        <p
+          [ngClass]="{
+            'green' : student.averageGrade > 80,
+            'orange' : student.averageGrade <= 80 && student.averageGrade >= 50,
+            'red': student.averageGrade < 50
+        }" 
+        >
+          {{ student.averageGrade }}
+        </p>
+      </td>
+      <td>
+        <button type="button" (click)="delete()" class="red" title="Delete Student">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
